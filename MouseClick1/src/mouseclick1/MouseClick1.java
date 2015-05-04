@@ -63,7 +63,7 @@ public class MouseClick1 extends JFrame
          * Events
          */
         
-        // Menu
+        // Menu - Help
         miHelp.addActionListener(new ActionListener()
         {
             @Override
