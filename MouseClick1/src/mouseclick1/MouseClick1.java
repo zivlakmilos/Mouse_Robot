@@ -13,10 +13,15 @@ public class MouseClick1 extends JFrame
 {
     // Visual components
     JLabel lblX, lblY, lblA;
+    JList lstX, lstY, lstA;
     
     // Constructor
     public MouseClick1()
     {
+        // Intitialization
+        lblX = new JLabel("X");
+        lblY = new JLabel("Y");
+        lblA = new JLabel("A");
     }
     
     //================================= main =================================//
@@ -25,6 +30,8 @@ public class MouseClick1 extends JFrame
      */
     public static void main(String[] args)
     {
+        MouseClick1 mainForm = new MouseClick1();
+        mainForm.setVisible(true);
     }
     //============================== end of main =============================//
 }
