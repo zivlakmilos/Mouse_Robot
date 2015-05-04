@@ -11,6 +11,14 @@ import javax.swing.*;
 
 public class MouseClick1 extends JFrame
 {
+    // Visual components
+    JLabel lblX, lblY, lblA;
+    
+    // Constructor
+    public MouseClick1()
+    {
+    }
+    
     //================================= main =================================//
     /**
      * @param args the command line arguments
