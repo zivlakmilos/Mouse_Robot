@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="293.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea layoutX="14.0" layoutY="23.0" prefHeight="200.0" prefWidth="84.0" fx:id="x" />
+      <TextArea fx:id="y" layoutX="106.0" layoutY="23.0" prefHeight="200.0" prefWidth="84.0" />
+      <TextArea fx:id="a" layoutX="198.0" layoutY="23.0" prefHeight="200.0" prefWidth="84.0" />
+      <TextArea fx:id="t" layoutX="290.0" layoutY="23.0" prefHeight="200.0" prefWidth="84.0" />
+      <Button fx:id="start" layoutX="14.0" layoutY="257.0" mnemonicParsing="false" onAction="#startOnClick" text="START" />
+      <Label layoutX="14.0" layoutY="7.0" text="X:" />
+      <Label layoutX="106.0" layoutY="7.0" text="Y:" />
+      <Label layoutX="198.0" layoutY="7.0" text="Akcija:" />
+      <Label layoutX="290.0" layoutY="7.0" text="Vreme:" />
+      <Button fx:id="stop" layoutX="74.0" layoutY="257.0" mnemonicParsing="false" onAction="#stopOnClick" text="STOP" />
+      <Label fx:id="pX" layoutX="290.0" layoutY="250.0" />
+      <Label fx:id="pY" layoutX="282.0" layoutY="272.0" />
+   </children>
+</Pane>
