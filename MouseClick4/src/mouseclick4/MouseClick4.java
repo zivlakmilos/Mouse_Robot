@@ -1,8 +1,11 @@
 package mouseclick4;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
+import java.util.ArrayList;
 
 import net.miginfocom.swing.*;
 
@@ -24,6 +27,9 @@ public class MouseClick4  extends JFrame
 	private JTextField txtRepeats;
 	private JButton btnStart, btnStop;
 	
+	// Global variables
+	MouseRobot robot;
+	
 	// Constructor
 	public MouseClick4()
 	{
@@ -33,10 +39,10 @@ public class MouseClick4  extends JFrame
 		
 		// Form initialization
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setSize(500, 500);
-		//setResizable(false);
+		setSize(500, 500);
+		setResizable(false);
 		setTitle("Mouse Click   ZI");
-		//setLayout(new MigLayout("wrap 1"));
+		setLayout(new MigLayout("wrap 1"));
 		
 		// Visual components initialization
 		pnlCoordinates = new JPanel(new MigLayout("wrap 4"));
@@ -54,6 +60,9 @@ public class MouseClick4  extends JFrame
 		txtRepeats = new JTextField(5);
 		btnStart = new JButton("Start");
 		btnStop = new JButton("Stop");
+		
+		// Global variables initialization
+		// robot = new MouseRobot();
 		
 		/*
 		 * Draw
@@ -84,6 +93,36 @@ public class MouseClick4  extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				String[] sX, sY, sA, sT;
+				int[] iX, iY, iA, iT;
+				
+				sX = txtX.getText().split("\n");
+				sY = txtY.getText().split("\n");
+				sA = txtA.getText().split("\n");
+				sT = txtT.getText().split("\n");
+				
+				iX = new int[sX.length];
+				iY = new int[sY.length];
+				iA = new int[sA.length];
+				iT = new int[sT.length];
+				
+				for(int i = 0; i < sX.length; i++)
+				{
+					iX[i] = Integer.parseInt(sX[i]);
+					iY[i] = Integer.parseInt(sY[i]);
+					iA[i] = Integer.parseInt(sA[i]);
+					iT[i] = Integer.parseInt(sT[i]);
+				}
+				
+				robot = new MouseRobot();
+				
+				robot.setX(iX);
+				robot.setY(iY);
+				robot.setA(iA);
+				robot.setT(iT);
+				robot.setNumOfRepeats(Integer.parseInt(txtRepeats.getText()));
+				
+				robot.start();
 			}
 		});
 		
