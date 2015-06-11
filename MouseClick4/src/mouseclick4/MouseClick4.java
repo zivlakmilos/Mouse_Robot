@@ -7,6 +7,10 @@ import java.awt.event.*;
 
 import net.miginfocom.swing.*;
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.mouse.*;
+
 /**
  * 
  * @author ZI
@@ -59,6 +63,8 @@ public class MouseClick4  extends JFrame
 		txtRepeats = new JTextField(5);
 		btnStart = new JButton("Start");
 		btnStop = new JButton("Izlaz");
+		
+		txtRepeats.setText("1");
 		
 		// Global variables initialization
 		// robot = new MouseRobot();
@@ -145,6 +151,37 @@ public class MouseClick4  extends JFrame
 			UIManager.setLookAndFeel(laf);
 			SwingUtilities.updateComponentTreeUI(this);
 		} catch(Exception err){}
+	}
+	
+	// Mouse listener
+	class MouseListener implements NativeMouseInputListener
+	{
+		@Override
+		public void nativeMouseClicked(NativeMouseEvent e)
+		{
+		}
+
+		@Override
+		public void nativeMousePressed(NativeMouseEvent e)
+		{
+		}
+
+		@Override
+		public void nativeMouseReleased(NativeMouseEvent e)
+		{
+		}
+
+		@Override
+		public void nativeMouseDragged(NativeMouseEvent e)
+		{
+		}
+
+		@Override
+		public void nativeMouseMoved(NativeMouseEvent e)
+		{
+			lblXN.setText("X: " + String.valueOf(e.getX()));
+			lblYN.setText("Y: " + String.valueOf(e.getY()));
+		}
 	}
 	
 	//=================== main =====================//
