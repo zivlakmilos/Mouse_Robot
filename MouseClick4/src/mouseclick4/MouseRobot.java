@@ -10,6 +10,7 @@ import java.awt.event.InputEvent;
  *
  */
 
+
 public class MouseRobot extends Thread
 {
 	// Global variables

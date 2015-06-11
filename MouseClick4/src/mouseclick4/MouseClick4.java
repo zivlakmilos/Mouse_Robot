@@ -4,8 +4,6 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.List;
-import java.util.ArrayList;
 
 import net.miginfocom.swing.*;
 
@@ -43,6 +41,7 @@ public class MouseClick4  extends JFrame
 		setResizable(false);
 		setTitle("Mouse Click   ZI");
 		setLayout(new MigLayout("wrap 1"));
+		setLookAndFeel();
 		
 		// Visual components initialization
 		pnlCoordinates = new JPanel(new MigLayout("wrap 4"));
@@ -59,7 +58,7 @@ public class MouseClick4  extends JFrame
 		lblYN = new JLabel();
 		txtRepeats = new JTextField(5);
 		btnStart = new JButton("Start");
-		btnStop = new JButton("Stop");
+		btnStop = new JButton("Izlaz");
 		
 		// Global variables initialization
 		// robot = new MouseRobot();
@@ -131,8 +130,21 @@ public class MouseClick4  extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				System.exit(0);
 			}
 		});
+	}
+	
+	// Set look and feel
+	private void setLookAndFeel()
+	{
+		String laf = "com.jtattoo.plaf.hifi.HiFiLookAndFeel";
+		
+		try
+		{
+			UIManager.setLookAndFeel(laf);
+			SwingUtilities.updateComponentTreeUI(this);
+		} catch(Exception err){}
 	}
 	
 	//=================== main =====================//
