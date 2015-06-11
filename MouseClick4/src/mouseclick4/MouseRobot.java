@@ -58,10 +58,20 @@ public class MouseRobot extends Thread
 	@Override
 	public void run()
 	{
+		try
+		{
+			Thread.sleep(500);
+		} catch (InterruptedException err1){}
+		
 		for(int i = 0; i < numOfRepeats; i++)
 		{
 			for(int j = 0; j < x.length; j++)
 			{
+				try
+				{
+					Thread.sleep(50);
+				} catch (InterruptedException err1) {}
+				
 				robot.mouseMove(x[j], y[j]);
 				switch(a[j])
 				{

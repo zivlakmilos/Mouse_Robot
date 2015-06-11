@@ -139,6 +139,15 @@ public class MouseClick4  extends JFrame
 				System.exit(0);
 			}
 		});
+		
+		// Mouse Listener
+		try
+		{
+			GlobalScreen.registerNativeHook();
+		} catch(Exception err){}
+		MouseListener mouseListener = new MouseListener();
+		GlobalScreen.addNativeMouseListener(mouseListener);
+		GlobalScreen.addNativeMouseMotionListener(mouseListener);
 	}
 	
 	// Set look and feel
@@ -154,7 +163,7 @@ public class MouseClick4  extends JFrame
 	}
 	
 	// Mouse listener
-	class MouseListener implements NativeMouseInputListener
+	public class MouseListener implements NativeMouseInputListener
 	{
 		@Override
 		public void nativeMouseClicked(NativeMouseEvent e)
