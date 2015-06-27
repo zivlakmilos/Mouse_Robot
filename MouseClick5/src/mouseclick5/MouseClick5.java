@@ -108,12 +108,12 @@ public class MouseClick5  extends JFrame
 				sA = txtA.getText().split("\n");
 				sT = txtT.getText().split("\n");
 				
-				iX = new int[sX.length];
-				iY = new int[sY.length];
-				iA = new int[sA.length];
-				iT = new int[sT.length];
+				iX = new int[sX.length - 1];
+				iY = new int[sY.length - 1];
+				iA = new int[sA.length - 1];
+				iT = new int[sT.length - 1];
 				
-				for(int i = 0; i < sX.length; i++)
+				for(int i = 0; i < sX.length - 1; i++)
 				{
 					iX[i] = Integer.parseInt(sX[i]);
 					iY[i] = Integer.parseInt(sY[i]);
@@ -129,6 +129,7 @@ public class MouseClick5  extends JFrame
 				robot.setT(iT);
 				robot.setNumOfRepeats(Integer.parseInt(txtRepeats.getText()));
 				
+				minimize();
 				robot.start();
 			}
 		});
@@ -138,6 +139,10 @@ public class MouseClick5  extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				txtX.setText("");
+				txtY.setText("");
+				txtA.setText("");
+				txtT.setText("");
 				recording = true;
 				minimize();
 			}
@@ -186,6 +191,11 @@ public class MouseClick5  extends JFrame
 		@Override
 		public void nativeMouseClicked(NativeMouseEvent e)
 		{
+		}
+
+		@Override
+		public void nativeMousePressed(NativeMouseEvent e)
+		{
 			if(recording)
 			{
 				int x, y, a, t;
@@ -196,19 +206,27 @@ public class MouseClick5  extends JFrame
 				tOld = System.currentTimeMillis();
 				txtX.append(String.valueOf(x) + "\n");
 				txtY.append(String.valueOf(y) + "\n");
-				txtA.append(String.valueOf(a) + "\n");
+				txtA.append("1" + String.valueOf(a) + "\n");
 				txtT.append(String.valueOf(t) + "\n");
 			}
 		}
 
 		@Override
-		public void nativeMousePressed(NativeMouseEvent e)
-		{
-		}
-
-		@Override
 		public void nativeMouseReleased(NativeMouseEvent e)
 		{
+			if(recording)
+			{
+				int x, y, a, t;
+				x = e.getX();
+				y = e.getY();
+				a = e.getButton();
+				t = (int) ((int) System.currentTimeMillis() - tOld);
+				tOld = System.currentTimeMillis();
+				txtX.append(String.valueOf(+x) + "\n");
+				txtY.append(String.valueOf(y) + "\n");
+				txtA.append("2" + String.valueOf(a) + "\n");
+				txtT.append(String.valueOf(t) + "\n");
+			}
 		}
 
 		@Override
@@ -219,8 +237,8 @@ public class MouseClick5  extends JFrame
 		@Override
 		public void nativeMouseMoved(NativeMouseEvent e)
 		{
-			lblXN.setText("X: " + String.valueOf(e.getX()));
-			lblYN.setText("Y: " + String.valueOf(e.getY()));
+			//lblXN.setText("X: " + String.valueOf(e.getX()));
+			//lblYN.setText("Y: " + String.valueOf(e.getY()));
 		}
 	}
 	
